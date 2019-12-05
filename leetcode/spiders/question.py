@@ -17,14 +17,16 @@ class QuestionSpider(scrapy.Spider):
         title = response.xpath('//*[@id="lc-home"]/div/div[1]/div[2]/div/div[1]/h4/a//text()').extract()
         content = response.xpath('//*[@id="question-detail-main-tabs"]/div[2]/div/div[1]/div//text()').extract()
         difficulty = response.xpath('//*[@id="lc-home"]/div/div[1]/div[2]/div/div[1]/div/span[2]//text()').extract()
-        accepted = response.xpath('//*[@id="lc-home"]/div/div[1]/div[2]/div/div[1]/h4/a//text()').extract()
+        accepted = response.xpath('//*[@id="lc-home"]/div/div[1]/div[2]/div/div[2]/div[1]/p[2]//text()').extract()
         submit = response.xpath('//*[@id="lc-home"]/div/div[1]/div[2]/div/div[2]/div[3]/p[2]//text()').extract()
         next_url = response.xpath('//*[@id="lc-home"]/div/div[2]/div[1]/div/div[1]/div/div[2]/div/div/div/div[3]/a[2]//@href').extract_first()
         print('https://leetcode-cn.com'+str(next_url))
-        self.res.append([{'title': str(title), 'content': str(content),
-                          'difficulty': str(difficulty), 'accepted': str(accepted), 'submit': str(submit)}])
+        self.res = self.res.append([{'title': title, 'content': content,
+                          'difficulty': difficulty, 'accepted': accepted, 'submit': submit}])
+        self.index += 1
         if next_url is not None:
-            if self.index%10==0:
+            print('now:'+str(self.index))
+            if self.index%100==0:
                 self.res.to_csv('question'+str(self.index)+'.csv')
             yield scrapy.Request('https://leetcode-cn.com'+str(next_url), callback=self.parse)
         else:
