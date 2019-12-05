@@ -15,8 +15,8 @@ import logging
 
 from scrapy import signals
 
-CHROME_PATH='F:\python\scrapy\chromedriver_win32\chromedriver.exe'
-CHROME_DRIVER_PATH='F:\python\scrapy\chromedriver_win32\chromedriver.exe'
+
+CHROME_DRIVER_PATH='..\chromedriver_win32\chromedriver.exe'
 class LeetcodeSpiderMiddleware(object):
     # Not all methods need to be defined. If a method is not defined,
     # scrapy acts as if the spider middleware does not modify the
