@@ -9,16 +9,13 @@
 
 ```shell
 pip install scrapy
-pip install selenium
+pip install selenium 
 ```
-
-​    
 
 ### 3.
 
 ```shell
 cd scrapy_leetcode
-
 scrapy crawl question
 ```
 
