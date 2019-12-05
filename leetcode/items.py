@@ -11,4 +11,10 @@ import scrapy
 class LeetcodeItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
+    id = scrapy.Field()
+    title = scrapy.Field()
+    content = scrapy.Field()
+    difficulty = scrapy.Field()
+    ac_rate = scrapy.Field()
+
     pass

@@ -13,7 +13,9 @@ BOT_NAME = 'leetcode'
 
 SPIDER_MODULES = ['leetcode.spiders']
 NEWSPIDER_MODULE = 'leetcode.spiders'
-
+DOWNLOADER_MIDDLEWARES = {
+    'leetcode.middlewares.ChromeDownloaderMiddleware': 543, #自定义selenium中间件
+}
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'leetcode (+http://www.yourdomain.com)'
